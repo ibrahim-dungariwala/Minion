@@ -1,37 +1,44 @@
 import React, { useState } from "react";
 
 
-export const Todo=()=>{
 
-    const [text,setText]=useState("")
+export const ToDo = () => {
+    
+    const [text,setText]= useState("")
     const [todo,setTodo]=useState([])
-    const [CopyTodo,setCopyTodo]=useState([])
+    const [copyTodo,setcopyTodo]= useState([])
 
-    const handleAdd=()=>{
-        if(!text.trim())return
-        setTodo([...todo,text])
-        console.log(text)
-        setCopyTodo([...todo,text])
-        setText("")
-    }  
 
-    return(
+
+
+const handleADD=()=>{
+    
+    if(!text.trim())return
+    setTodo([...todo,text])
+    setcopyTodo([...todo,text])
+    setText("")
+
+}
+
+    return (
         <div>
-            <h1>Todo</h1>
-            <input type="text" onChange={(e)=>setText(e.target.value)} 
-            value={text} placeholder="Todo Text... "  />{" "}
-            <button onClick={()=>handleAdd()}>ADD</button>
+            <h1>hellow</h1>
+            <input type="text" placeholder="Todo list.." value={text}
+                onChange={(e) => setText(e.target.value)} />
+            <button onClick={()=> handleADD()}  >ADD</button>
+
 
 
             <ol>
                 {todo.map((item,index)=>{
                     return(
-                    <li key={index}>
-                        {item} {" "}
-                    </li>
-                )} )}
+
+                        <li key={index} >{item} {" "}</li>
+                    )
+                })}
             </ol>
 
         </div>
+
     )
-}
+} 
